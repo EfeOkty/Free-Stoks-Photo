@@ -38,11 +38,11 @@ flowchart TB
     end
     subgraph App["Free Stoks Photo"]
         B[Web veya Desktop]
-        C[/api/reverse-search]
-        D[fetch + cheerio]
+        C["/api/reverse-search"]
+        D["fetch + cheerio"]
     end
     subgraph External[" "]
-        E[CORS proxy / Yandex]
+        E["CORS proxy / Yandex"]
         F[Sonuç listesi]
     end
     A -->|Görsel URL| B
