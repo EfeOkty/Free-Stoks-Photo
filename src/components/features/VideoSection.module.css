@@ -1,0 +1,34 @@
+.section {
+  padding: 64px 0 80px;
+  background: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text-head);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.description {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-text-body);
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+.embedWrap {
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-soft);
+}

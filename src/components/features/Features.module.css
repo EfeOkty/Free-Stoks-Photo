@@ -1,0 +1,107 @@
+.section {
+  padding: 100px 0 120px;
+  position: relative;
+  background: var(--color-bg-elevated);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card {
+  position: relative;
+  padding: 36px 28px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: transform var(--duration-normal) var(--ease-out-expo),
+    border-color var(--duration-fast),
+    box-shadow var(--duration-normal);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 251, 243, 0.06) 0%,
+    transparent 50%,
+    rgba(232, 168, 74, 0.04) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-normal);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+  margin-bottom: 24px;
+  transition: transform var(--duration-normal) var(--ease-out-expo),
+    background var(--duration-fast);
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.05);
+  background: rgba(232, 168, 74, 0.28);
+}
+
+.iconWrapper svg {
+  width: 26px;
+  height: 26px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-head);
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-text-body);
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 72px 0 88px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 28px 24px;
+  }
+}

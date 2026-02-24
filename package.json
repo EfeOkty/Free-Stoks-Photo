@@ -1,0 +1,79 @@
+{
+  "name": "free-stoks-photo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Free stock photos & reverse image search. Find clean, watermark-free versions of stock images.",
+  "author": "Free Stoks Photo",
+  "productName": "Free Stoks Photo",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "electron": "electron .",
+    "electron:dev": "concurrently \"next dev -p 3004\" \"wait-on http://127.0.0.1:3004 && electron .\"",
+    "electron:build": "node scripts/generate-icons.js && next build && node scripts/prepare-electron.js && electron-builder",
+    "electron:build:mac": "node scripts/generate-icons.js && next build && node scripts/prepare-electron.js && electron-builder --mac",
+    "electron:build:win": "node scripts/generate-icons.js && next build && node scripts/prepare-electron.js && electron-builder --win --x64",
+    "generate-icons": "node scripts/generate-icons.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "next": "16.1.6",
+    "puppeteer": "^24.37.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "icon-gen": "^5.0.0",
+    "typescript": "^5",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.freestoksphoto.app",
+    "productName": "Free Stoks Photo",
+    "directories": {
+      "output": "dist"
+    },
+    "executableName": "Free Stoks Photo",
+    "files": [
+      "electron/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "electron-app",
+        "to": "app"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.photography",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icon.icns",
+      "identity": null,
+      "extendInfo": {
+        "CFBundleDisplayName": "Free Stoks Photo",
+        "CFBundleName": "Free Stoks Photo"
+      }
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    }
+  }
+}
